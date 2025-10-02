@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[GRATIS] Maestro de Fórmulas IA - iaemprender.com</title> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+    
+    <style>
+        /* VARIABLES DE DISEÑO Y RESETEO */
+        :root {
+            --color-primary: #f94144; /* Rojo Fuerte/Llamativo (Botón y Énfasis) */ 
+            --color-secondary: #c9184a; /* Rojo Oscuro (Hover) */
+            --color-accent-dark: #172a3a; /* Azul Oscuro/Negro (Texto, Fondo de Barra) */
+            --color-success: #38a169; /* Verde de Validación */ 
+            --color-background: #ffffff;
+            --color-highlight: #f8f9fa; /* Fondo Gris Claro para Bloques */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; /* Poppins es más audaz y profesional */
+            background-color: var(--color-background);
+            color: var(--color-accent-dark);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+        }
+        
+        /* Contenedor principal con sombra */
+        .container {
+            max-width: 600px; /* Aumentamos el ancho para más espacio */
+            width: 90%;
+            margin: 0 auto; 
+            padding: 30px 20px;
+        }
+        
+        /* BARRA SUPERIOR (Encabezado de sistema) */
+        .top-bar {
+            width: 100%;
+            padding: 0.8rem 0;
+            background-color: var(--color-accent-dark); 
+            color: #d1d5db; /* Gris claro sutil */
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            max-width: 150px;
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); /* Sombra para resaltar icono */
+        }
+
+        /* TITULARES Y TEXTO */
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 3rem); /* Fuente más grande e impactante */
+            color: var(--color-accent-dark);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            position: relative;
+            font-weight: 800; 
+        }
+
+        h1 strong {
+            color: var(--color-primary); 
+        }
+        
+       /* EFECTO DE SUBRAYADO */
+        .underline-effect {
+            display: inline-block;
+            color: var(--color-secondary);
+            border-bottom: 5px solid var(--color-primary); /* Línea gruesa de impacto */
+            padding-bottom: 4px; /* Separa la línea del texto */
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            color: var(--color-accent-dark); 
+            margin-bottom: 2rem;
+            font-weight: 600; 
+            letter-spacing: -0.5px; /* Ajuste sutil para estética Pro */
+        }
+
+        p {
+            max-width: 550px;
+            margin: 1.5rem auto; /* Más espaciado */
+            font-size: 1.05rem;
+            line-height: 1.7; /* Mejor legibilidad */
+            color: var(--color-accent-dark);
+        }
+        
+        /* LISTA DE BENEFICIOS (UL) */
+        /* LISTA DE BENEFICIOS (UL) - Diseño de Lectura Fluida */
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            max-width: 450px;
+            margin: 2rem auto;
+        }
+        
+        ul li {
+            margin-bottom: 1.0rem; 
+            font-size: 1.05rem;
+            font-weight: 400; 
+            display: block;
+            border-left: 0;
+            padding: 0;
+            background-color: transparent;
+            box-shadow: none;
+        }
+        
+        /* ICONOS DE LISTA: Aplicamos el chulo verde a todos por defecto */
+        ul li::before {
+            content: '✅'; /* ¡Cambiado a chulo verde! */
+            margin-right: 10px;
+            font-size: 1.3em;
+            line-height: 1;
+            display: inline-block;
+            color: var(--color-success); /* ¡Cambiado a color verde! */
+        }
+        
+        /* Eliminamos la regla .fase-1::before ya que todos son verdes ahora */
+        
+        /* FORMULARIO: SECCIÓN DE CAPTURA DESTACADA */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            width: 100%;
+            max-width: 450px;
+            margin: 3rem auto;
+            padding: 35px;
+            background-color: var(--color-highlight);
+            border-radius: 6px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra intensa para destacar */
+        }
+
+        input[type="text"], input[type="email"] {
+            padding: 1rem;
+            font-size: 1.1rem; /* Campo de entrada más grande */
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus, input[type="email"]:focus {
+            border-color: var(--color-accent-dark);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(23, 42, 58, 0.1); /* Sombra de foco */
+        }
+
+        /* BOTÓN CTA - Diseño de impulso con zoom */
+        button {
+            background-color: var(--color-primary); 
+            color: rgb(235, 235, 231);
+            padding: 1.4rem; /* Botón mucho más grande */
+            font-size: 1.4rem;
+            font-weight: 800;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 8px 15px rgba(231, 5, 9, 0.89);
+        }
+
+        button:hover {
+            background-color: var(--color-secondary);
+            transform: scale(1.05);
+        }
+
+        small {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: -1.5rem; /* Ajuste visual */
+        }
+        /* PIE DE PÁGINA PROFESIONAL (LEGAL) */
+        footer {
+            width: 100%;
+            background-color: var(--color-highlight);
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.7rem; /* Reducimos el tamaño de la fuente */
+            color: #6b7280;
+            line-height: 1.4; /* Ajustamos el espacio entre líneas */
+            text-align: center; /* ¡Centramos todo el texto! */
+        }
+
+        .footer-content {
+            max-width: 800px;
+            width: 90%;
+            margin: 0 auto;
+            /* text-align: center; (No necesario aquí, ya lo hace el padre) */
+        }
+
+        .footer-links a {
+            color: var(--color-accent-dark);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 600;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .disclaimer {
+            margin: 1rem auto; /* Centramos el bloque de descargo */
+            max-width: 600px; /* Le damos un ancho máximo para que no se extienda */
+            padding: 1rem;
+            border-left: 3px solid var(--color-primary);
+            background-color: #fef2f2;
+            text-align: left; /* Mantenemos el texto del descargo alineado a la izquierda para mejor lectura */
+            font-size: 0.7rem;
+            color: #7f1d1d;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        ACCESO INSTANTÁNEO Y GRATUITO
+    </div>
+    
+    <div class="container">
+        
+        <h1>[GRATIS] Desbloquea el <strong> Maestro de Fórmulas IA</strong> y <span class="underline-effect">Vende Todos los Días.</span></h1>
+        
+        <h2>No necesitas experiencia; solo registrarte para activarlo y usar el verdadero poder de la IA. Este sistema está entrenado con los <span style="color: var(--color-primary); font-weight: 700;">atajos y las tácticas exactas</span> extraídas de años de campañas de <strong>marketing de alto rendimiento</strong>. Es un método probado, funcional y es tuyo <strong>GRATIS</strong> hoy mismo.</h2>
+       
+        <img src="bot.png" alt="Icono de Robot IA Emprender" /> 
+      
+        <p><strong>Activa al Maestro:</strong> Obtén el sistema de 3 Fases que valida cualquier idea de negocio generando el copy de venta en 15 minutos, listo para lanzar y monetizar.</p>       
+      
+    <ul>
+            <li><span style="color: var(--color-primary); font-weight: 500;"> <strong>Fase 1: Descubre qué vender</strong></span> – La fórmula para validar una idea de negocio de alta demanda y alto margen (Servicio, Producto o Info producto).</li>
+            
+            <li><span style="color: var(--color-primary); font-weight: 500;"><strong>Fase 2: Copy que funciona  </strong></span> – Genera anuncios de venta AIDA listos para usar en Meta y Google, con copys que convierten.</li>
+            
+            <li><span style="color: var(--color-primary); font-weight: 500;"><strong>Fase 3: El embudo invisible</strong></span> – Ve cómo conectar tu idea y el anuncio para automatizar las ventas de tu nuevo negocio.</li>
+        </ul>
+
+        <p style="font-style: italic; font-weight: 600; margin-bottom: 2rem; color: #4b5563;">"Es como tener un consultor experto en IA trabajando para ti 24/7. Pero sin sueldo, sin errores... y sin vacaciones."</p>
+        
+        <form name="lead-capture" method="POST" data-netlify="true" action="/success.html">
+            <input type="hidden" name="form-name" value="lead-capture" />
+            
+            <input type="text" name="name" placeholder="Tu nombre" required /> 
+            <input type="email" name="email" placeholder="Tu mejor correo electrónico" required />
+            
+            <button type="submit">¡SÍ! Descargar ahora mi Maestro de Fórmulas IA</button>
+        </form>
+
+        <small>Sin costo. Sin trucos. Funciona o lo borras.<br>Tu información está segura. No hacemos spam.</small>
+    </div>
+    </div> <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+               <strong> | Creado por Team IA Emprender | </strong>
+            </div>
+
+            <div class="disclaimer">
+                <strong>Descargo de Responsabilidad:</strong> Este sitio web no forma parte de Facebook, Meta Platforms Inc. o Google LLC. Tampoco está respaldado por ninguna de estas entidades. Los resultados presentados son ilustrativos; sus ganancias dependen de su esfuerzo individual y la aplicación de las estrategias.
+            </div>
+            <p style="margin-top: 1rem;">© 2025 Team IA Emprender. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
