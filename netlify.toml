@@ -1,20 +1,18 @@
 # -------------------------------------------------------------
-# 1. CACHÉ LARGA PARA ARCHIVOS ESTÁTICOS (Imagenes, Fuentes, Favicon)
-# Esta regla va PRIMERO y aplica a todos los estáticos.
+# 1. CACHÉ LARGA (1 AÑO) para archivos estáticos
+# Cambiamos la ruta a '/bot.png' para forzar la coincidencia exacta.
 # -------------------------------------------------------------
 [[headers]]
-  for = "/*.{png,jpg,jpeg,gif,svg,ico,woff,woff2,eot,ttf,otf}"
+  # Usamos la ruta exacta para bot.png y el formato global para otros archivos
+  for = ["/bot.png", "/*.{png,jpg,jpeg,gif,svg,ico,woff,woff2,eot,ttf,otf}"]
   [headers.values]
-    # CACHÉ DE 1 AÑO (31536000 segundos) para el bot.png y las fuentes.
     Cache-Control = "max-age=31536000, public, immutable" 
 
 # -------------------------------------------------------------
-# 2. CACHÉ CORTA PARA ARCHIVOS HTML
-# Esta regla va después y se enfoca SOLO en archivos .html
+# 2. CACHÉ CORTA (5 MINUTOS) para archivos HTML
 # -------------------------------------------------------------
 [[headers]]
-  # Aplica solo a archivos .html, como index.html.
+  # Aplica EXCLUSIVAMENTE a archivos .html (index.html).
   for = "/*.html" 
   [headers.values]
-    # CACHÉ DE 5 MINUTOS (300 segundos).
     Cache-Control = "max-age=300, must-revalidate"
