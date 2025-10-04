@@ -1,0 +1,11 @@
+# Regla 1: CACHÉ DE 1 AÑO para archivos que no cambian (Imágenes, Fuentes, Favicon)
+[[headers]]
+  for = "/*.{png,jpg,jpeg,gif,svg,ico,woff,woff2,eot,ttf,otf}"
+  [headers.values]
+    Cache-Control = "max-age=31536000, public, immutable" 
+
+# Regla 2: CACHÉ CORTA para el HTML (Tu index.html)
+[[headers]]
+  for = "/*" 
+  [headers.values]
+    Cache-Control = "max-age=300, must-revalidate"
