@@ -1,27 +1,29 @@
 [build]
-  # El comando de construcción si usaras un SSG (déjalo vacío por ahora)
-  command = ""
-  # El directorio donde se construye tu sitio (donde está index.html)
-  publish = "."
+  functions = "netlify/functions"
 
-[functions]
-  # La carpeta donde Netlify buscará tu código de funciones
-  directory = "netlify/functions"
+[context.production.environment]
+  NODE_VERSION = "20"
+
 # -------------------------------------------------------------
-# 1. CACHÉ LARGA (1 AÑO) para archivos estáticos
-# Cambiamos la ruta a '/bot.png' para forzar la coincidencia exacta.
+# 1. CACHÉ LARGA (1 AÑO) para archivos estáticos (bot.png)
 # -------------------------------------------------------------
 [[headers]]
-  # Usamos la ruta exacta para bot.png y el formato global para otros archivos
-  for = ["/bot.png", "/*.{png,jpg,jpeg,gif,svg,ico,woff,woff2,eot,ttf,otf}"]
+  for = "/bot.png"
   [headers.values]
-    Cache-Control = "max-age=31536000, public, immutable" 
+    Cache-Control = "max-age=31536000, public, immutable"
 
 # -------------------------------------------------------------
-# 2. CACHÉ CORTA (5 MINUTOS) para archivos HTML
+# 2. CACHÉ LARGA (1 AÑO) para otros assets (PNG, JPG, Fuentes)
 # -------------------------------------------------------------
 [[headers]]
-  # Aplica EXCLUSIVAMENTE a archivos .html (index.html).
-  for = "/*.html" 
+  for = "/*.{png,jpg,jpeg,gif,svg,ico,woff,woff2,eot,ttf,otf}"
+  [headers.values]
+    Cache-Control = "max-age=31536000, public, immutable"
+
+# -------------------------------------------------------------
+# 3. CACHÉ CORTA (5 MINUTOS) para archivos HTML (Permite ver cambios)
+# -------------------------------------------------------------
+[[headers]]
+  for = "/*.html"
   [headers.values]
     Cache-Control = "max-age=300, must-revalidate"
