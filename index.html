@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -129,19 +130,40 @@
         
         /* Eliminamos la regla .fase-1::before ya que todos son verdes ahora */
         
-        /* FORMULARIO: SECCIÓN DE CAPTURA DESTACADA */
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            width: 100%;
-            max-width: 450px;
-            margin: 3rem auto;
-            padding: 35px;
-            background-color: var(--color-highlight);
-            border-radius: 6px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra intensa para destacar */
-        }
+       /* FORMULARIO: SECCIÓN DE CAPTURA DESTACADA */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%; /* Aseguramos que ocupe el 100% de su contenedor */
+    max-width: 450px;
+    margin: 3rem auto;
+    /* --- AQUI ESTA LA MODIFICACION: --- */
+    padding: 35px; /* Mantener el padding para escritorio */
+    background-color: var(--color-highlight);
+    border-radius: 3px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
+}
+/* --- NUEVA MEDIA QUERY (Añade esto al final del bloque <style>) --- */
+@media (max-width: 480px) {
+    .container {
+        /* Reduce el padding del contenedor principal en móviles para dar más espacio */
+        padding: 20px 10px; 
+    }
+    
+    form {
+        /* Reduce el padding interno del formulario en móviles */
+        padding: 20px; 
+        /* Es crucial usar box-sizing: border-box; para que el padding y el border no sumen al ancho. */
+        box-sizing: border-box; 
+    }
+
+    button {
+        /* Hacemos el botón un poco menos alto en móvil para ahorrar espacio vertical */
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+}
 
         input[type="text"], input[type="email"] {
             padding: 1rem;
@@ -226,44 +248,51 @@
 </head>
 <body>
     <div class="top-bar">
-        ACCESO INSTANTÁNEO Y GRATUITO
+        ACCESO INSTANTÁNEO Y GRATUITO — Sistema de Trabajo
     </div>
     
     <div class="container">
         
-        <h1>[GRATIS] Desbloquea el <strong> Maestro de Fórmulas IA</strong> y <span class="underline-effect">Vende Todos los Días.</span></h1>
+        <h1>
+            [GRATIS] Desbloquea el <strong>Motor de Fórmulas IA</strong> y 
+            <span class="underline-effect">Genera Ventas en 15 Minutos.</span>
+        </h1>
         
-        <h2>No necesitas experiencia; solo registrarte para activarlo y usar el verdadero poder de la IA. Este sistema está entrenado con los <span style="color: var(--color-primary); font-weight: 700;">atajos y las tácticas exactas</span> extraídas de años de campañas de <strong>marketing de alto rendimiento</strong>. Es un método probado, funcional y es tuyo <strong>GRATIS</strong> hoy mismo.</h2>
+        <h2>
+            No es un PDF. Es tu **Workspace de Prompts** con los <span style="color: var(--color-primary); font-weight: 700;">atajos, códigos y tácticas exactas</span> de marketing de alto rendimiento, listas para **copiar y pegar** en cualquier IA (ChatGPT, Gemini, etc.). Actívalo **GRATIS** hoy mismo.
+        </h2>
        
         <img src="bot.png" alt="Icono de Robot IA Emprender" /> 
       
-        <p><strong>Activa al Maestro:</strong> Obtén el sistema de 3 Fases que valida cualquier idea de negocio generando el copy de venta en 15 minutos, listo para lanzar y monetizar.</p>       
+        <p><strong>Activa tu Motor de Prompts:</strong> Obtén el sistema de 3 Fases que valida cualquier idea de negocio y genera el copy de venta *en caliente*, listo para lanzar y monetizar.</p>       
       
-    <ul>
-            <li><span style="color: var(--color-primary); font-weight: 500;"> <strong>Fase 1: Descubre qué vender</strong></span> – La fórmula para validar una idea de negocio de alta demanda y alto margen (Servicio, Producto o Info producto).</li>
+        <ul>
+            <li><span style="color: var(--color-primary); font-weight: 500;"> <strong>Fase 1: Descubre qué vender</strong></span> – La fórmula para validar una idea de negocio de alta demanda y alto margen (Servicio, Producto o Infoproducto).</li>
             
-            <li><span style="color: var(--color-primary); font-weight: 500;"><strong>Fase 2: Copy que funciona  </strong></span> – Genera anuncios de venta AIDA listos para usar en Meta y Google, con copys que convierten.</li>
+            <li><span style="color: var(--color-primary); font-weight: 500;"><strong>Fase 2: El Copy Mágico ✍️ </strong></span> – **[Copia y Pega]** Genera anuncios AIDA y scripts de venta listos para usar en Meta y Google.</li>
             
-            <li><span style="color: var(--color-primary); font-weight: 500;"><strong>Fase 3: El embudo invisible</strong></span> – Ve cómo conectar tu idea y el anuncio para automatizar las ventas de tu nuevo negocio.</li>
+            <li><span style="color: var(--color-primary); font-weight: 500;"><strong>Fase 3: El Firewall Invisible</strong></span> – Ve cómo conectar tu idea y el anuncio para **automatizar la captura de leads** de tu nuevo negocio (usando sistemas sin código).</li>
         </ul>
 
-        <p style="font-style: italic; font-weight: 500; margin-bottom: 2rem; color: #4b5563;">"Es como tener un consultor experto en IA trabajando para ti 24/7. Pero sin sueldo, sin errores... y sin vacaciones."</p>
+        <p style="font-style: italic; font-weight: 500; margin-bottom: 2rem; color: #4b5563;">"Es como tener a un desarrollador senior experto en IA trabajando en tu copy 24/7. Pero sin sueldo, sin errores... y sin vacaciones."</p>
         
-        <form name="lead-capture" method="POST" data-netlify="true" action="/success.html">
-            <input type="hidden" name="form-name" value="lead-capture" />
-            
-            <input type="text" name="name" placeholder="Tu nombre" required /> 
-            <input type="email" name="email" placeholder="Tu mejor correo electrónico" required />
-            
-            <button type="submit">¡SÍ! Descargar ahora mi Maestro de Fórmulas IA</button>
+        <form name="lead-capture" method="POST" action="/.netlify/functions/form-handler" data-netlify="true">
+        <input type="hidden" name="form-name" value="lead-capture" />
+    
+        <input type="text" name="first_name" placeholder="Tu nombre" required /> 
+        
+        <input type="email" name="email" placeholder="Tu mejor correo electrónico" required />
+    
+        <button type="submit">¡SÍ! Activar mi Motor de Fórmulas IA</button>
         </form>
 
-        <small>Sin costo. Sin trucos. Funciona o lo borras.<br>Tu información está segura. No hacemos spam.</small>
+        <small>Acceso inmediato. Garantía de funcionamiento. <br>Tu información está **protegida por nuestro Firewall de Leads**; no toleramos el spam.</small>
     </div>
-    </div> <footer>
+    
+    <footer>
         <div class="footer-content">
             <div class="footer-links">
-               <strong> | Creado por Team IA Emprender | </strong>
+                <strong> | Creado por Team IA Emprender | </strong>
             </div>
 
             <div class="disclaimer">

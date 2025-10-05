@@ -1,3 +1,12 @@
+[build]
+  # El comando de construcción si usaras un SSG (déjalo vacío por ahora)
+  command = ""
+  # El directorio donde se construye tu sitio (donde está index.html)
+  publish = "."
+
+[functions]
+  # La carpeta donde Netlify buscará tu código de funciones
+  directory = "netlify/functions"
 # -------------------------------------------------------------
 # 1. CACHÉ LARGA (1 AÑO) para archivos estáticos
 # Cambiamos la ruta a '/bot.png' para forzar la coincidencia exacta.
