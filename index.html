@@ -288,16 +288,28 @@ form {
 
         <p style="font-style: italic; font-weight: 500; margin-bottom: 2rem; color: #4b5563;">"Es como tener a un desarrollador senior experto en IA trabajando en tu copy 24/7. Pero sin sueldo, sin errores... y sin vacaciones."</p>
         
-      <form name="lead-capture" method="POST" action="/.netlify/functions/form-handler">
+     <form name="lead-capture" method="POST" action="/.netlify/functions/form-handler">
     <input type="hidden" name="form-name" value="lead-capture" />
 
     <p class="hidden">
         <label>No rellenar: <input name="bot-field" /></label>
-        </p>
+    </p>
 
     <input type="text" name="first_name" placeholder="Tu nombre" required /> 
-    
     <input type="email" name="email" placeholder="Tu mejor correo electrónico" required />
+
+    <div style="text-align: left; font-size: 0.9rem; margin-top: -0.5rem; color: #4b5563;">
+        <label>
+            <input 
+                type="checkbox" 
+                name="confirm_data" 
+                value="confirmed" 
+                required 
+                style="margin-right: 8px;"
+            />
+            Confirmo que mis datos son reales y correctos.
+        </label>
+    </div>
 
     <button type="submit">¡SÍ! Activar mi Motor de Fórmulas IA</button>
 </form>
