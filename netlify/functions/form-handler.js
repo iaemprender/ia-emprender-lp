@@ -1,44 +1,23 @@
-// ... (código de validación y Brevo arriba) ...
+// ... (código de manejo de POST y parsing) ...
 
-// ----------------------------------------------------------------------
-// FUNCIÓN PRINCIPAL (El Handler que Netlify llama)
-// ----------------------------------------------------------------------
-exports.handler = async (event) => {
-    // ... (código de manejo de POST y parsing) ...
+try {
+    // --- PASO 1: FIREWALL DE LEADS (Validación) ---
+    // COMENTADO: const validationResult = await validateEmail(contact.email); 
+    // COMENTADO: (Bloque if de validación)
 
-    try {
-       // --- PASO 1: FIREWALL DE LEADS (Validación) ---
-// const validationResult = await validateEmail(contact.email); // COMENTADO
+    // --- PASO 2: SINCRONIZACIÓN (Brevo) ---
+    // ¡COMENTA ESTA LÍNEA TAMBIÉN!
+    // await sendToBrevo(contact);
 
-// if (!validationResult.isValid) { // COMENTADO
-//     console.log(`Lead bloqueado por ELV: ${contact.email} - Status: ${validationResult.status}`);
-//     // Redirige al usuario a la página de fallo (sin añadir a Brevo)
-//     return {
-//         statusCode: 303, 
-//         headers: { 
-//             Location: '/lead-fallido.html' 
-//         } 
-//
+    // --- PASO 3: ÉXITO Y REDIRECCIÓN ---
+    return {
+        statusCode: 303, 
+        headers: { 
+            Location: '/gracias.html' // AHORA DEBE LLEGAR AQUÍ
+        } 
+    };
 
-        // --- PASO 2: SINCRONIZACIÓN (Brevo) ---
-        await sendToBrevo(contact);
-
-        // --- PASO 3: ÉXITO Y REDIRECCIÓN ---
-        return {
-            // CAMBIO 1: Usamos 303 para redirección POST
-            statusCode: 303, 
-            headers: { 
-                // CAMBIO 2: ¡USAMOS EL NOMBRE CORRECTO!
-                Location: '/gracias.html' 
-            } 
-        };
-
-    } catch (error) {
-        console.error("Error general en el handler:", error);
-        // En caso de error inesperado, redireccionamos al lead fallido
-        return {
-            statusCode: 303,
-            headers: { Location: '/lead-fallido.html' } 
-        };
-    }
-};
+} catch (error) {
+    console.error("Error general en el handler:", error);
+    // ... (redirección de fallo) ...
+}
