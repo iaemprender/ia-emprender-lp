@@ -7,21 +7,18 @@ exports.handler = async (event) => {
     // ... (código de manejo de POST y parsing) ...
 
     try {
-        // --- PASO 1: FIREWALL DE LEADS (Validación) ---
-        const validationResult = await validateEmail(contact.email);
+       // --- PASO 1: FIREWALL DE LEADS (Validación) ---
+// const validationResult = await validateEmail(contact.email); // COMENTADO
 
-        if (!validationResult.isValid) {
-            console.log(`Lead bloqueado por ELV: ${contact.email} - Status: ${validationResult.status}`);
-            // Redirige al usuario a la página de fallo (sin añadir a Brevo)
-            return {
-                // CAMBIO 1: Usamos 303 para redirección POST
-                statusCode: 303, 
-                headers: { 
-                    // CAMBIO 2: Aseguramos el nombre correcto
-                    Location: '/lead-fallido.html' 
-                } 
-            };
-        }
+// if (!validationResult.isValid) { // COMENTADO
+//     console.log(`Lead bloqueado por ELV: ${contact.email} - Status: ${validationResult.status}`);
+//     // Redirige al usuario a la página de fallo (sin añadir a Brevo)
+//     return {
+//         statusCode: 303, 
+//         headers: { 
+//             Location: '/lead-fallido.html' 
+//         } 
+//
 
         // --- PASO 2: SINCRONIZACIÓN (Brevo) ---
         await sendToBrevo(contact);
