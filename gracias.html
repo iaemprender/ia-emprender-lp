@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¡Espera! Tu Oferta de Bienvenida - Mapa 10K</title> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+    
+    <style>
+        /* VARIABLES DE DISEÑO */
+        :root {
+            --color-primary: #f94144; /* Rojo Fuerte (Énfasis CTA) */ 
+            --color-accent-dark: #172a3a; /* Azul Oscuro/Negro (Texto) */
+            --color-success: #38a169; /* Verde de Validación */ 
+            --color-background: #ffffff;
+            --color-highlight: #f8f9fa; /* Fondo Gris Claro */
+
+            /* Colores de Compra */
+            --color-buy: #f9c74f; /* Amarillo de Alerta/Compra */
+            --color-buy-hover: #f9a826; /* Amarillo Oscuro */
+            --color-text-light: #9ca3af; /* Gris para textos secundarios */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-accent-dark);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 650px;
+            width: 90%;
+            margin: 0 auto; 
+            padding: 30px 20px;
+        }
+        
+        .top-bar {
+            width: 100%;
+            padding: 0.8rem 0;
+            background-color: var(--color-primary);
+            color: white;
+            font-weight: 800;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        /* TITULARES */
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 2.8rem); 
+            color: var(--color-accent-dark);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            font-weight: 800; 
+        }
+
+        h1 strong {
+            color: var(--color-primary); 
+        }
+        
+        h2 {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            color: var(--color-accent-dark); 
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+            font-weight: 800; 
+        }
+        
+        .status-message {
+            background-color: var(--color-success);
+            color: white;
+            padding: 1.2rem 1.5rem;
+            font-size: 1.15rem;
+            font-weight: 800;
+            border-radius: 4px;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 15px rgba(56, 161, 105, 0.4);
+        }
+
+        p {
+            max-width: 650px;
+            margin: 1.2rem auto;
+            font-size: 1.05rem;
+            line-height: 1.6; 
+            text-align: left;
+        }
+        
+        /* Contenedor principal del mensaje (para romper el bloque de texto) */
+        .content-section {
+            padding: 10px 0;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Bloque de Propuesta de Valor (Para el "Mapa 10K") */
+        .value-proposition {
+            background-color: #f0f8ff;
+            border: 2px solid #b3e5fc;
+            padding: 25px 30px;
+            margin: 2rem auto;
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .value-proposition h3 {
+            font-size: 1.5rem;
+            color: var(--color-accent-dark);
+            margin-top: 0;
+            border-bottom: 2px solid #b3e5fc;
+            padding-bottom: 10px;
+        }
+        
+        .value-proposition ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+        
+        .value-proposition ul li {
+            padding: 8px 0;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--color-accent-dark);
+        }
+        
+        .value-proposition ul li::before {
+            content: "✅";
+            margin-right: 10px;
+        }
+
+
+        /* CAJA DE PRECIO Y CTA */
+        .price-box {
+            background-color: var(--color-highlight);
+            padding: 30px 40px;
+            margin: 3rem auto 2rem auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 4px solid var(--color-primary);
+        }
+
+        .price-box .discount-text {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .price-box h3 {
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
+            color: var(--color-accent-dark);
+            margin: 0;
+            line-height: 1;
+        }
+        
+        .price-box h3 small {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            text-decoration: line-through;
+            color: var(--color-text-light);
+            margin-right: 15px;
+            font-weight: 400;
+        }
+
+        /* BOTÓN DE COMPRA URGENTE */
+        .cta-buy {
+            background-color: var(--color-buy); 
+            color: var(--color-accent-dark); 
+            padding: 1.2rem; 
+            font-size: clamp(1.4rem, 4vw, 1.8rem); 
+            font-weight: 800;
+            border-radius: 6px;
+            border: 4px solid var(--color-accent-dark);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 8px 15px rgba(249, 199, 79, 0.5);
+            display: block; 
+            text-decoration: none;
+            margin-top: 1.5rem;
+        }
+
+        .cta-buy:hover {
+            background-color: var(--color-buy-hover);
+            transform: scale(1.02);
+        }
+
+        .timer {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin: 1.5rem 0;
+            padding: 0.5rem;
+            border: 2px dashed var(--color-primary);
+            border-radius: 4px;
+        }
+        
+        /* Botón de No Gracias */
+        .no-thanks-link {
+            display: block;
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: var(--color-text-light);
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+
+        .no-thanks-link:hover {
+            color: var(--color-accent-dark);
+        }
+
+        /* Footer */
+        .footer-legal {
+            width: 100%;
+            background-color: var(--color-highlight);
+            color: var(--color-text-light);
+            padding: 20px 0;
+            margin-top: auto;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        OFERTA EXCLUSIVA: SOLO EN ESTA PÁGINA Y POR TIEMPO LIMITADO.
+    </div>
+    
+    <div class="container">
+        
+        <div class="status-message">
+            ¡CONFIRMADO! Tu Maestro de Fórmulas IA es tuyo y llegará a tu correo en 5 minutos.
+        </div>
+        
+        <h1>¡UN MOMENTO!</h1>
+        
+        <h2>Antes de recibir tu Maestro IA, mira lo que la mayoría no está viendo.</h2>
+        
+        <div class="content-section">
+            <p>El Maestro de Fórmulas IA es poderoso: puede escribir anuncios, crear campañas y automatizar casi cualquier cosa. Pero tiene un "secreto" que la mayoría olvida:</p>
+            
+            <p style="text-align: center;"><strong style="color: var(--color-primary); font-size: 1.2rem;">NO PUEDE VENDER SIN UNA BUENA ESTRATEGIA.</strong></p>
+            
+            <p>Es una IA tan poderosa o tan inútil dependiendo de qué tan bien la uses. Si la emoción por el Maestro de fórmulas IA te hace olvidar lo esencial —<strong>el producto y la estrategia</strong>— tu cuenta bancaria seguirá igual. Es la realidad.</p>
+            
+            <p>Suena lógico, ¿verdad? Por eso te propongo esto: <strong>¿Te parece si te enseño a usar el Maestro IA para vender y te muestro cómo generé más de $10,000 USD con un solo producto creado por él?</strong></p>
+            
+            <h3>SOBRE MÍ Y LA OPORTUNIDAD</h3>
+            <p>Soy Joel, fundador de <strong>IA Emprender Academy</strong>. Desde el 2022, he ayudado a más de 100 emprendedores a convertir sus ideas en proyectos reales que facturan gracias al poder de la IA. Lancé esta academia <strong>sin contratar expertos ni freelancers</strong>, usando una estrategia simple y mi Maestro de Fórmulas IA.</p>
+            
+            <p style="text-align: center;"><strong style="color: var(--color-primary); font-size: 1.2rem;">Mi propuesta es clara y directa. No es gratuita, pero es una invitación:</strong></p>
+            
+            <h3>CHARLA HONESTA 1-A-1 Y MAPA 10K (TÚ INVITAS EL CAFÉ)</h3>
+            
+            <p>Quiero tener una <strong>charla honesta</strong> contigo para discutir tu idea de negocio y el mejor camino para usar el Maestro IA. El costo para agendar esta sesión y obtener el Mapa 10K es de <strong>$10 USD</strong>.</p>
+            
+            <p><strong>¿Por qué $10?</strong> Porque en esta charla, <strong>tú invitas el café</strong> y yo pongo mi consultoría 🥇. Es un pequeño costo para ti, pero un gran filtro para mí, asegurando que solo hable con personas que se toman su negocio <strong>en serio</strong> y valoran mi tiempo.</p> 
+            
+            <p>Por el precio de un par de cafés, obtienes el plano exacto que me hizo ganar $10K. Si no estás dispuesto a invertir ese monto, es probable que no estés listo para un negocio real.</p>
+        </div>
+
+        <div class="value-proposition">
+            <h3>Esto es lo que obtienes a cambio de tu invitación de $10 USD:</h3>
+            <ul>
+                <li><strong>El Mapa de los 10K (Acceso Vitalicio):</strong> El plano exacto que me mostró la verdad del negocio.</li>
+                <li><strong>Video "La Estrategia 10K":</strong> Te revelo la estrategia sin adornos que me permitió llevar un solo producto a generar +10,000 USD.</li>
+                <li><strong>La verdad sobre el producto:</strong> Te muestro con qué tipo de producto empecé, cómo lo lancé y por qué funcionó.</li>
+                <li><strong>Tiempo Privado de Discusión (La Joya):</strong> Un espacio privado para discutir tu caso, tus preguntas y tus planes.</li>
+            </ul>
+        </div>
+        
+        <div class="content-section">
+            <p>Te estoy vendiendo la <strong>claridad</strong> y el <strong>camino</strong>. No dependo de talentos, dependo de <strong>SISTEMAS</strong>. Así como las grandes empresas, mi negocio no depende de súper talentos, solo de:</p>
+            
+            <p style="text-align: center;"><strong style="color: var(--color-primary); font-size: 1.2rem;">PERSONAS QUE QUIERAN TRABAJAR Y MONTAR UN NEGOCIO DIGITAL CON IA EN SERIO.</strong></p>
+
+            <p>La mayoría "juguetea" con el Maestro, dice que no sirve y busca la píldora mágica. No seas esa persona. 
+                Puedes ofenderte e irte, <strong>o puedes invertir $10 USD</strong> para agendar una llamada donde 
+                te enseñaré cómo he ayudado a mis clientes y les he cobrado más de $1k por semana, todo gracias al Maestro (Fórmulas IA) que tú tienes ahora.</p>
+
+            <p style="text-align: center;"><strong>¿No me crees? Te lo demuestro en la charla.</strong></p>
+            
+            <p>Si quieres mi experiencia, mi respaldo, mi consultoría y trabajar directamente conmigo, entonces da el siguiente paso. Haz clic en el botón, <strong>invita el café (\$10)</strong> y hablemos de negocios.</p>
+
+            <p style="text-align: center;">PD.- Si no puedes <strong>invitar un café</strong> para iniciar tu negocio, quédate con el Maestro IA y 
+                haz todo por tu cuenta. Pero si quieres que te ayude entonces, <strong>clic en el botón de abajo</strong>.</p>
+        </div>
+
+        <div class="price-box">
+            <div class="discount-text">
+                OFERTA ÚNICA DE BIENVENIDA (Restan <span id="countdown">15:00</span>)
+            </div>
+            
+            <h3><small>$97 USD</small> $10 USD</h3>
+            
+            <a href="[TU_LINK_DE_PAGO_DE_10_USD_AQUI]" class="cta-buy">
+                ¡SÍ! Acepto la Charla Honesta y el Mapa 10K por solo $10 USD
+            </a>
+            
+            <small>Tu oferta expira en 15 minutos. Compra 100% segura. Acceso inmediato al mapa.</small>
+        </div>
+        
+        <a href="[TU_LINK_DE_SALIDA_A_LA_PAGINA_DEL_EMAIL_DE_CONFIRMACION]" class="no-thanks-link">
+            No, gracias. Quiero ir a mi email y perder esta oferta única.
+        </a>
+        
+    </div>
+
+    <div class="footer-legal">
+        <p>Esta oferta solo está disponible AHORA en esta página, como agradecimiento por tu registro. Si cierras o recargas, el precio subirá permanentemente a $97 USD.</p>
+    </div>
+
+    <script>
+        // Inicia la cuenta regresiva en 15 minutos (900 segundos)
+        let timeRemaining = 900; 
+        const countdownElement = document.getElementById('countdown');
+
+        function updateCountdown() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            
+            // Formato MM:SS
+            const displayTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Actualiza el texto en la caja de precio
+            countdownElement.textContent = displayTime;
+
+            if (timeRemaining > 0) {
+                timeRemaining--;
+            } else {
+                clearInterval(timerInterval);
+                countdownElement.textContent = "¡EXPIRADA!";
+                
+                // Opcional: Deshabilitar el botón de compra o redirigir
+                const ctaButton = document.querySelector('.cta-buy');
+                ctaButton.textContent = "Oferta Expirada - Precio: $97 USD";
+                ctaButton.href = "#"; // Evita la compra
+                ctaButton.style.backgroundColor = "#ccc"; 
+                ctaButton.style.boxShadow = "none";
+                ctaButton.style.cursor = "default";
+            }
+        }
+
+        // Ejecutar cada segundo
+        const timerInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
