@@ -158,6 +158,17 @@ form {
         box-sizing: border-box; 
     }
 
+    /* --- NUEVO BLOQUE: CLASE OCULTA PARA EL HONEYPOT --- */
+.hidden {
+    /* Oculta completamente el campo al usuario */
+    position: absolute;
+    opacity: 0;
+    pointer-events: none; /* Evita que el usuario interactúe por accidente */
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
     button {
         /* Hacemos el botón un poco menos alto en móvil para ahorrar espacio vertical */
         padding: 1rem;
@@ -277,12 +288,12 @@ form {
 
         <p style="font-style: italic; font-weight: 500; margin-bottom: 2rem; color: #4b5563;">"Es como tener a un desarrollador senior experto en IA trabajando en tu copy 24/7. Pero sin sueldo, sin errores... y sin vacaciones."</p>
         
-        <form name="lead-capture" method="POST" action="/.netlify/functions/form-handler">
+      <form name="lead-capture" method="POST" action="/.netlify/functions/form-handler">
     <input type="hidden" name="form-name" value="lead-capture" />
 
     <p class="hidden">
         <label>No rellenar: <input name="bot-field" /></label>
-    </p>
+        </p>
 
     <input type="text" name="first_name" placeholder="Tu nombre" required /> 
     
