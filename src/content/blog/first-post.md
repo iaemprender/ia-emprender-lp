@@ -1,10 +1,8 @@
 ---
-title: "La Única Fórmula IA que Vende..."
-description: 'Tu descripción aquí.'
-pubDate: 2025-10-07
-tag: 'Estrategia' 
-heroImage: '/images/blog-placeholder-3.jpg' 👈 ¡Ruta verificada!
+title: "Test de Publicación"
 ---
+
+<!-- Mantén el contenido del post -->
 
 title: "La Única Fórmula IA que Vende..."
 description: 'Tu descripción aquí.'
