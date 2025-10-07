@@ -1,5 +1,16 @@
 [build]
+  # Propiedades del primer bloque [build]
   functions = "netlify/functions"
+  
+  # Propiedades del segundo bloque [build]
+  publish = "dist"  
+  command = "npm run build"
+
+[functions]
+  # Indica dónde Astro/Netlify colocará las funciones de servidor (SSR)
+  directory = "netlify/functions"
+  # Define el entorno de ejecución para las funciones
+  node_bundler = "esbuild"
 
 [context.production.environment]
   NODE_VERSION = "20"
@@ -27,15 +38,3 @@
   for = "/*.html"
   [headers.values]
     Cache-Control = "max-age=300, must-revalidate"
-#---------------------------------------------------------------
-[build]
-  # Indica dónde están los archivos estáticos (aunque uses SSR, Netlify lo necesita)
-  publish = "dist" 
-  # El comando de compilación
-  command = "npm run build"
-  
-[functions]
-  # Indica dónde Astro/Netlify colocará las funciones de servidor (SSR)
-  directory = "netlify/functions"
-  # Define el entorno de ejecución para las funciones
-  node_bundler = "esbuild"
