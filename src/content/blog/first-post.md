@@ -1,6 +1,15 @@
 ---
-// 1. IMPORTA la imagen primero. Esto es OBLIGATORIO para Astro.
-import heroPlaceholder from '../../assets/blog-placeholder-3.jpg';
+// Importa la imagen primero, dándole un nombre (ej: heroPlaceholder)
+import heroPlaceholder from '../../assets/blog-placeholder-3.jpg'; 
+
+title: "La Única Fórmula IA que Vende..."
+description: 'Tu descripción aquí.'
+pubDate: 2025-10-07
+tag: 'Estrategia' 
+
+// ASIGNA la variable importada a la propiedad heroImage
+heroImage: heroPlaceholder
+---
 
 title: "La Única Fórmula IA que Vende..."
 description: 'Tu descripción aquí.'
