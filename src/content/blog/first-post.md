@@ -1,9 +1,10 @@
 ---
-title: "La Única Fórmula IA que Vende (Y Por Qué tu Chatbot Está Fallando)"
-description: "Descubre los 3 pilares de la IA que convierte. Si tu chatbot solo escribe contenido, estás dejando miles de dólares en la mesa."
+title: "La Única Fórmula IA que Vende..."
+description: '...'
 pubDate: 2025-10-07
 tag: 'Estrategia'
-heroImage: '/blog/formula.jpg' 
+// Cambia esto a la ruta de un archivo que sabes que existe en tu carpeta assets
+heroImage: '../../assets/blog-placeholder-3.jpg' 
 ---
 
 Si usas la Inteligencia Artificial solo para "generar ideas" o "escribir párrafos bonitos", estás usando una Ferrari para ir al supermercado. El verdadero poder de la IA no es la creatividad, es la **conversión**.
