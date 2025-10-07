@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Configuramos la página de error para que NO tenga la barra superior de "ACCESO INSTANTÁNEO"
+// y use el footer estándar (no el legal del upsell).
+---
+<Layout title="Error de Validación - IA Emprender" hasTopBar={false} hasLegalFooter={false}>
+    
+    <div class="container" style="padding-top: 50px;">
+        <h1 style="font-size: clamp(2rem, 5vw, 2.5rem); color: var(--color-primary);">
+            ¡Ups! Parece que hubo un problema. 🚧
+        </h1>
+        
+        <p style="text-align: center; font-size: 1.1rem; max-width: 550px; margin: 1.5rem auto;">
+            El sistema de seguridad de **IA Emprender** detectó un problema con la validación de tu correo electrónico. Esto puede ser por:
+        </p>
+        
+        <ul style="max-width: 500px; margin: 30px auto; text-align: left; list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 10px; font-size: 1.05rem;">❌ Un error de dedo (*typo*) al escribir la dirección.</li>
+            <li style="margin-bottom: 10px; font-size: 1.05rem;">❌ Usar un correo temporal, desechable o de alto riesgo (*spam-trap*).</li>
+        </ul>
+        
+        <p style="text-align: center; font-weight: 600; font-size: 1.1rem; margin-top: 30px;">
+            <strong>Queremos enviarte el "Motor de Fórmulas IA"</strong>. Por favor, revisa bien tu dirección de correo electrónico e inténtalo de nuevo.
+        </p>
+        
+        <a href="/" style="display: inline-block; 
+                            padding: 15px 30px; 
+                            background-color: var(--color-accent-dark); 
+                            color: white; 
+                            text-decoration: none; 
+                            border-radius: 6px; 
+                            margin-top: 20px; 
+                            font-weight: 800; 
+                            font-size: 1.1rem; 
+                            transition: background-color 0.2s;">
+            Volver al Formulario de Descarga
+        </a>
+        
+        <p style="margin-top: 30px; font-size: 0.9em; color: var(--color-text-light);">
+            Tu seguridad y la calidad de nuestra lista son nuestra prioridad.
+        </p>
+    </div>
+    
+</Layout>

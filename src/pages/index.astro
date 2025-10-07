@@ -1,0 +1,50 @@
+---
+// Importamos el componente Layout
+import Layout from '../layouts/Layout.astro';
+// No necesitamos definir title, hasTopBar o hasLegalFooter porque Layout.astro
+// usa los valores por defecto que son correctos para la Landing Page.
+---
+<Layout>
+    <div class="container">
+        <img src="/bot.png" alt="Motor de Fórmulas IA" class="main-image" />
+        <h1>
+            ¡DESCARGA GRATIS! <br> El <strong class="underline-effect">Motor de Fórmulas IA</strong> que Genera
+        </h1>
+        <h2>
+            Ideas, Guiones y Copy Persuasivo para tu Negocio en Segundos.
+        </h2>
+        
+        <ul class="feature-list">
+            <li>🚀 **[FÓRMULA SECRETA]:** Accede a las plantillas de prompts que facturan.</li>
+            <li>✍️ **[GENERACIÓN INSTANTÁNEA]:** Crea títulos, ganchos y CTA's que convierten.</li>
+            <li>⏱️ **[AHORRA 5 HORAS]:** Deja de escribir contenido aburrido desde cero.</li>
+        </ul>
+        
+        <form name="descarga" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias">
+            <input type="hidden" name="form-name" value="descarga" />
+            <div class="hidden">
+                <label>No rellenar: <input name="bot-field" /></label>
+            </div>
+            
+            <input type="text" name="name" placeholder="Tu Nombre Completo" required /> 
+            <input type="email" name="email" placeholder="Tu mejor correo electrónico" required />
+
+            <div style="text-align: left; font-size: 0.9rem; margin-top: -0.5rem; color: #4b5563;">
+                <label>
+                    <input 
+                        type="checkbox" 
+                        name="confirm_data" 
+                        value="confirmed" 
+                        required 
+                        style="margin-right: 8px;"
+                    />
+                    Confirmo que mis datos son reales y correctos.
+                </label>
+            </div>
+
+            <button type="submit">¡SÍ! Activar mi Motor de Fórmulas IA</button>
+        </form>
+
+        <small>Acceso inmediato. Garantía de funcionamiento. <br>Tu información está **protegida por nuestro Firewall de Leads**; no toleramos el spam.</small>
+    </div>
+</Layout>

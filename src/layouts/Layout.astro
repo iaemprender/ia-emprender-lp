@@ -1,0 +1,71 @@
+---
+// 1. FRONTMATTER: Define las propiedades (props)
+// Permite que las páginas que usan este layout definan su propio título, si tienen barra superior o footer legal.
+const { 
+    title = "[GRATIS] Maestro de Fórmulas IA - iaemprender.com", 
+    hasTopBar = true, 
+    hasLegalFooter = false 
+} = Astro.props;
+
+// 2. IMPORTO EL ARCHIVO GLOBAL.CSS (QUE CONTIENE TAILWIND)
+// Esto reemplaza el bloque <style> gigante de antes.
+import '../styles/global.css'; 
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title> 
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+    
+    </head>
+<body class="min-h-screen flex flex-col items-center text-center antialiased">
+    
+    {hasTopBar && (
+        <div class="w-full py-2 px-4 bg-gray-900 text-gray-300 font-semibold text-sm shadow-md sticky top-0 z-10">
+            {/* Si es la página de gracias, muestra el mensaje de oferta, sino el estándar */}
+            {title.includes('Espera') 
+                ? 'OFERTA EXCLUSIVA: SOLO EN ESTA PÁGINA Y POR TIEMPO LIMITADO.' 
+                : 'ACCESO INSTANTÁNEO Y GRATUITO — Sistema de Trabajo'}
+        </div>
+    )}
+
+    <main class="w-full flex-grow flex flex-col items-center">
+        <slot />
+    </main>
+
+    {hasLegalFooter ? (
+        <div class="w-full bg-gray-100 text-gray-500 py-5 mt-auto text-xs sm:text-sm">
+            <p class="max-w-3xl mx-auto px-4">Esta oferta solo está disponible AHORA en esta página, como agradecimiento por tu registro. Si cierras o recargas, el precio subirá permanentemente a $97 USD.</p>
+        </div>
+    ) : (
+        <footer class="w-full bg-gray-100 text-gray-700 pt-8 mt-12 border-t border-gray-200 text-sm">
+    <div class="max-w-3xl mx-auto px-4">
+        
+        <div class="font-bold mb-4 flex justify-center space-x-4">
+            <a href="/blog" class="hover:text-red-600 transition">Blog</a>
+            <span>|</span>
+            <a href="/about" class="hover:text-red-600 transition">Acerca de</a>
+            <span>|</span>
+            <a href="#" class="hover:text-red-600 transition">Política de Privacidad</a> 
+        </div>
+        
+        <div class="font-bold mb-4">
+            | Creado por Team IA Emprender | 
+        </div>
+
+        <div class="mx-auto my-4 max-w-xl p-4 border-l-4 border-red-600 bg-red-50 text-left text-xs text-red-900">
+            <strong class="font-extrabold">Descargo de Responsabilidad:</strong> Este sitio web no forma parte de Facebook, Meta Platforms Inc. o Google LLC. Tampoco está respaldado por ninguna de estas entidades. Los resultados presentados son ilustrativos; sus ganancias dependen de su esfuerzo individual y la aplicación de las estrategias.
+        </div>
+        <p class="mt-4 pb-4 text-xs text-gray-500">© 2025 Team IA Emprender. Todos los derechos reservados.</p>
+    </div>
+</footer>
+    )}
+    
+</body>
+</html>
