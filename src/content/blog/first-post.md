@@ -1,12 +1,15 @@
 ---
-title: "La Única Fórmula IA que Vende..."
-description: '...'
-pubDate: 2025-10-07
-tag: 'Estrategia'
-// Cambia esto a la ruta de un archivo que sabes que existe en tu carpeta assets
-heroImage: '../../assets/blog-placeholder-3.jpg' 
----
+// 1. IMPORTA la imagen primero. Esto es OBLIGATORIO para Astro.
+import heroPlaceholder from '../../assets/blog-placeholder-3.jpg';
 
+title: "La Única Fórmula IA que Vende..."
+description: 'Tu descripción aquí.'
+pubDate: 2025-10-07
+tag: 'Estrategia' 
+
+// 2. ASIGNA la variable importada (heroPlaceholder) a la propiedad heroImage.
+heroImage: heroPlaceholder 
+---
 Si usas la Inteligencia Artificial solo para "generar ideas" o "escribir párrafos bonitos", estás usando una Ferrari para ir al supermercado. El verdadero poder de la IA no es la creatividad, es la **conversión**.
 
 Miles de emprendedores están fallando porque no entienden el principio clave: **Una IA es tan buena como el sistema de venta que la dirige.**

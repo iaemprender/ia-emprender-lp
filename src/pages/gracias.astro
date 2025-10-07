@@ -83,40 +83,16 @@ import Layout from '../layouts/Layout.astro';
         </a>
         
     </div>
+// ... dentro del bloque <script>
 
-<script>
-        // Inicia la cuenta regresiva en 15 minutos (900 segundos)
-        let timeRemaining = 900; 
-        const countdownElement = document.getElementById('countdown');
+// CORRECCIÓN: Añade ! para asegurar existencia (resuelve "posiblemente null")
+const countdownElement = document.getElementById('countdown')!; 
 
-        function updateCountdown() {
-            const minutes = Math.floor(timeRemaining / 60);
-            const seconds = timeRemaining % 60;
-            
-            // Formato MM:SS
-            const displayTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            // Actualiza el texto en la caja de precio
-            countdownElement.textContent = displayTime;
+// CORRECCIÓN: Añade ! y tipa como HTMLAnchorElement (resuelve "no existe la propiedad href/style")
+const ctaButton = document.getElementById('cta-button')! as HTMLAnchorElement; 
 
-            if (timeRemaining > 0) {
-                timeRemaining--;
-            } else {
-                clearInterval(timerInterval);
-                countdownElement.textContent = "¡EXPIRADA!";
-                
-                // Opcional: Deshabilitar el botón de compra o redirigir
-                const ctaButton = document.querySelector('.cta-buy');
-                ctaButton.textContent = "Oferta Expirada - Precio: $97 USD";
-                ctaButton.href = "#"; // Evita la compra
-                ctaButton.style.backgroundColor = "#ccc"; 
-                ctaButton.style.boxShadow = "none";
-                ctaButton.style.cursor = "default";
-            }
-        }
+// El resto de tu código ahora funcionará sin errores de tipado, por ejemplo:
+ctaButton.href = 'URL_DESTINO'; // Esto ya no da error.
 
-        // Ejecutar cada segundo
-        const timerInterval = setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
+// ... el resto de tu código JavaScript
 </Layout>

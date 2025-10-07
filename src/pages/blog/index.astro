@@ -1,13 +1,11 @@
 ---
-// Importación corregida de CollectionEntry
+import Layout from '../../layouts/Layout.astro';
+// AÑADE CollectionEntry aquí para el tipado correcto
 import { getCollection, type CollectionEntry } from 'astro:content'; 
-import Layout from '../../layouts/Layout.astro'; 
-// Asegúrate de que esta ruta sea correcta o cámbiala por una imagen de blog real
 import BlogImage from '../../assets/blog-placeholder-about.jpg'; 
 
-// 1. Obtiene TODOS los posts de la colección 'blog'
-// Usamos el tipado para asegurar que sabemos qué datos vienen
-const allBlogPosts: CollectionEntry<'blog'>[] = await getCollection('blog'); 
+// 1. Tipamos explícitamente la colección (esto resuelve el error 'slug' y 'any')
+const allBlogPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
 
 // 2. Ordena los posts por fecha de publicación (más reciente primero)
 const sortedPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
@@ -16,36 +14,23 @@ const sortedPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.dat
 <Layout title="Blog de IA Emprender Academy" hasTopBar={false} hasLegalFooter={false}>
     
     <section class="container mx-auto py-16 px-4 max-w-5xl">
-        
         <header class="text-center mb-12">
-            <h1 class="text-5xl font-extrabold text-gray-900 mb-4">
-                <span class="text-red-600">Fórmulas IA</span> y Estrategias de Venta
-            </h1>
-            <p class="text-xl text-gray-600">
-                El blog oficial para emprendedores que usan la inteligencia artificial no para crear contenido, sino para <span class="font-bold text-gray-800">generar ingresos.</span>
-            </p>
-        </header>
+            </header>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
             {sortedPosts.map((post) => (
-                // El tipado del bucle map() ahora se infiere correctamente de sortedPosts.
                 <a href={`/blog/${post.slug}/`} class="block bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] overflow-hidden">
-                    <img src={post.data.heroImage || BlogImage.src} alt={`Miniatura de ${post.data.title}`} class="w-full h-48 object-cover"/>
+                    <img 
+                        src={post.data.heroImage || BlogImage.src} 
+                        alt={`Miniatura de ${post.data.title}`} 
+                        class="w-full h-48 object-cover"
+                    />
                     <div class="p-6 text-left">
                         <span class={`text-sm font-semibold uppercase tracking-wider ${post.data.tag === 'Estrategia' ? 'text-red-600' : 'text-gray-600'}`}>
                             {post.data.tag || 'General'}
                         </span>
-                        <h2 class="text-xl font-bold text-gray-900 mt-2 mb-2">
-                            {post.data.title}
-                        </h2>
-                        <p class="text-gray-600 text-sm">
-                            {post.data.description}
-                        </p>
-                        <p class="text-xs text-gray-400 mt-4">
-                            Por Joel | {post.data.pubDate.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
-                        </p>
-                    </div>
+                        </div>
                 </a>
             ))}
             
