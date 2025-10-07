@@ -1,8 +1,9 @@
 ---
 title: "La Única Fórmula IA que Vende..." 
 description: 'Tu descripción aquí.' 
-pubDate: 2025-10-07 tag: 'Estrategia' heroImage: '/images/blog-placeholder-3.jpg'
+pubDate: 2025-10-07 tag: 'Estrategia' heroImage: 'public/blog-placeholder-3.jpg'
 ---
+
 Si usas la Inteligencia Artificial solo para "generar ideas" o "escribir párrafos bonitos", estás usando una Ferrari para ir al supermercado. El verdadero poder de la IA no es la creatividad, es la conversión.
 
 Miles de emprendedores están fallando porque no entienden el principio clave: Una IA es tan buena como el sistema de venta que la dirige.
