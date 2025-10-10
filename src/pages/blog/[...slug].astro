@@ -1,32 +1,36 @@
 ---
-import { getCollection, type CollectionEntry, render } from 'astro:content'; // AÑADE 'render' aquí
+import { getCollection, type CollectionEntry, render } from 'astro:content';
+// La ruta '../../layouts/Layout.astro' es la correcta para archivos anidados en /pages/blog/
 import Layout from '../../layouts/Layout.astro'; 
 
 // 1. FUNCIÓN OBLIGATORIA: Define las rutas de todos los posts
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map((post) => ({
-    params: { slug: post.slug }, // post.slug ya existe en el objeto CollectionEntry
-    props: { post },
-  }));
+  // CORRECCIÓN: Tipado explícito de 'post: CollectionEntry<"blog">' para resolver el error de 'slug'.
+  return posts.map((post: CollectionEntry<'blog'>) => {
+    // Definimos el slug explícitamente primero
+    const postSlug = post.slug; 
+    return ({
+      params: { slug: postSlug }, // Usamos la nueva variable aquí
+      props: { post },
+    });
+  });
 }
 
 // 2. DEFINE EL TIPO DE LA PROPIEDAD: Esto elimina el error de tipado 'any'
 type Props = {
-    post: CollectionEntry<'blog'>;
+  post: CollectionEntry<'blog'>;
 };
 
 // 3. ASIGNACIÓN EXPLÍCITA y CORRECCIÓN DE RENDER
 const { post } = Astro.props as Props;
-
-// CORRECCIÓN: Usamos la función 'render(post)' en lugar de 'post.render()'
 const { Content } = await render(post); 
 
 // 4. Formatear la fecha
 const formattedDate = post.data.pubDate.toLocaleDateString('es-ES', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
+  year: 'numeric', 
+  month: 'long', 
+  day: 'numeric' 
 });
 ---
 
@@ -55,6 +59,13 @@ const formattedDate = post.data.pubDate.toLocaleDateString('es-ES', {
             <div class="prose max-w-none text-gray-800">
                 <Content />
             </div>
+            
         </article>
+        
+        <div class="mt-12 text-center pt-8 border-t border-gray-200">
+            <a href="/blog" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-full transition duration-300">
+                ← Volver al Índice del Blog
+            </a>
         </div>
+    </div>
 </Layout>
